@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.app = undefined;
+exports.api = undefined;
 
 var _firebaseFunctions = require('firebase-functions');
 
@@ -45,7 +45,18 @@ _app.use((0, _cookieParser2.default)());
 // });
 
 _app.get('/hello', function (req, res) {
-    res.send('Hello world');
+    res.status(200).json({
+        "status": "ok",
+        "message": "Hello World"
+    });
 });
 
-var app = exports.app = functions.https.onRequest(_app);
+_app.get('/hello/:username', function (req, res) {
+    var username = req.params.username || 'anno';
+    res.status(200).json({
+        "status": "ok",
+        "message": 'Hello World, ' + username
+    });
+});
+
+var api = exports.api = functions.https.onRequest(_app);

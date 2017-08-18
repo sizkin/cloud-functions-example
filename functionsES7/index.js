@@ -23,7 +23,18 @@ _app.use(cookieParser());
 // });
 
 _app.get('/hello', ( req, res ) => {
-    res.send(`Hello world`);
+    res.status(200).json({
+        "status": "ok",
+        "message": "Hello World"
+    });
 });
 
-export let app = functions.https.onRequest(_app);
+_app.get('/hello/:username', ( req, res ) => {
+    let username = req.params.username || 'anno';
+    res.status(200).json({
+        "status": "ok",
+        "message": `Hello World, ${username}`
+    });
+});
+
+export let api = functions.https.onRequest(_app);
