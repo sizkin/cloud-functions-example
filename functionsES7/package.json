@@ -1,0 +1,17 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "firebase-admin": "~4.2.1",
+    "firebase-functions": "^0.5.7",
+    "firebase-tools": "^3.9.2",
+    "global": "^4.3.2",
+    "kcors": "2",
+    "koa": "^2.3.0",
+    "koa-cookie": "^1.0.0",
+    "koa-router": "7",
+    "package.json": "^2.0.1"
+  },
+  "private": true
+}
