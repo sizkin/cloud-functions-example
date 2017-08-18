@@ -5,17 +5,15 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp(functions.config().firebase);
 
-import Koa from 'koa';
-import Router from 'koa-router';
-import cookie from 'koa-cookie';
-import cors from 'kcors';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
-const _app = new Koa();
-const router = new Router();
+const _app = express();
 
 // Middleware
-_app.use(cookie());
-_app.use(cors());
+_app.use(cors({origin: true}));
+_app.use(cookieParser());
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -24,19 +22,8 @@ _app.use(cors());
 //  response.send("Hello from Firebase!");
 // });
 
-router.get('/', async ( ctx, next ) => {
-    // let req = ctx.request;
-    // let res = ctx.response;
-
-    ctx.status = 200;
-    ctx.body = {
-        'status': 'ok',
-        'message': 'Hello World'
-    };
+_app.get('/hello', ( req, res ) => {
+    res.send(`Hello world`);
 });
-
-_app
-    .use(router.routes())
-    .use(router.allowedMethods());
 
 export let app = functions.https.onRequest(_app);

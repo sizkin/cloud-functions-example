@@ -3,15 +3,12 @@
   "description": "Cloud Functions for Firebase",
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
     "firebase-admin": "~4.2.1",
     "firebase-functions": "^0.5.7",
-    "firebase-tools": "^3.9.2",
-    "global": "^4.3.2",
-    "kcors": "2",
-    "koa": "^2.3.0",
-    "koa-cookie": "^1.0.0",
-    "koa-router": "7",
-    "package.json": "^2.0.1"
+    "firebase-tools": "^3.9.2"
   },
   "private": true
 }
