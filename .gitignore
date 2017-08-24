@@ -59,7 +59,11 @@ typings/
 
 # temp
 .DS_Store
+*/.DS_Store
 
 # lock files
 *.lock
+
+# credential key
+test-cr-9bf8d-firebase-adminsdk-g5y30-859c9af407.json
 
