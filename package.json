@@ -6,6 +6,7 @@
     "prebuild": "rimraf functions",
     "build": "babel 'functionsES7' --out-dir 'functions' --presets=es2017 --plugins transform-runtime --copy-files --ignore 'node_modules'",
     "postbuild": "cd functions && yarn",
+    "qb": "babel 'functionsES7' --out-dir 'functions' --presets=es2017 --plugins transform-runtime --copy-files --ignore 'node_modules'",
     "deploy": "yarn run build && firebase deploy",
     "serve": "firebase serve --only functions"
   },

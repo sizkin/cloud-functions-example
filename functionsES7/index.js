@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
@@ -9,9 +9,12 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
+import { Users } from './models/Users';
+
 const _app = express();
 
 // Middleware
+_app.enable('trust proxy');
 _app.use(cors({origin: true}));
 _app.use(cookieParser());
 
@@ -22,18 +25,27 @@ _app.use(cookieParser());
 //  response.send("Hello from Firebase!");
 // });
 
-_app.get('/hello', ( req, res ) => {
+_app.get('/hello', (req, res) => {
     res.status(200).json({
         "status": "ok",
         "message": "Hello World"
     });
 });
 
-_app.get('/hello/:username', ( req, res ) => {
+_app.get('/hello/:username', (req, res) => {
     let username = req.params.username || 'anno';
     res.status(200).json({
         "status": "ok",
         "message": `Hello World, ${username}`
+    });
+});
+
+_app.get('/db/connect', async (req, res) => {
+    // console.log(Users);
+    let connectStatus = await Users();
+    res.status(200).json({
+        "status": "ok",
+        "message": `${connectStatus}`
     });
 });
 
